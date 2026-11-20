@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tide Royale — GTA 6-style cover studio</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+<style>
+@font-face { font-family: 'Anton'; src: url('fonts/Anton-Regular.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Pacifico'; src: url('fonts/Pacifico-Regular.ttf') format('truetype'); font-display: swap; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <h1>TIDE ROYALE</h1>
+  <p>Turn any photo into a GTA 6-style cover — six panels, one sunset, no apologies.</p>
+</header>
+<div id="error" class="error" hidden></div>
+<main class="studio">
+  <section class="preview-wrap">
+    <div class="size-row" role="group" aria-label="Cover size">
+      <button id="size-landscape" class="active">Landscape 1920×1080</button>
+      <button id="size-portrait">Portrait 1080×1350</button>
+      <button id="size-square">Square 1080×1080</button>
+    </div>
+    <canvas id="preview" width="1920" height="1080"></canvas>
+    <p class="hint">Click any photo on the cover to select it and set its focal point. Drag the zoom slider to crop tighter.</p>
+    <div class="export-row">
+      <button id="export-landscape">Export PNG · 1920×1080</button>
+      <button id="export-portrait">Export PNG · 1080×1350</button>
+      <button id="export-square">Export PNG · 1080×1080</button>
+    </div>
+  </section>
+  <aside class="controls">
+    <section>
+      <h2>Grade</h2>
+      <div class="preset-row">
+        <button id="preset-royale" class="active">Royale Gold</button>
+        <button id="preset-neon">Neon Nights</button>
+        <button id="preset-pastel">Pastel Vice</button>
+        <button id="preset-noir">Noir Gold</button>
+      </div>
+      <label>Treatment <span id="treatment-val">55%</span>
+        <input id="treatment" type="range" min="0" max="100" value="55">
+      </label>
+      <label>Poster Ink <span id="ink-val">0%</span>
+        <input id="ink" type="range" min="0" max="100" value="0">
+      </label>
+    </section>
+    <section class="words">
+      <h2>Words</h2>
+      <label>Title <input id="title-input" type="text" maxlength="24"></label>
+      <label>Script line <input id="script-input" type="text" maxlength="48"></label>
+      <label>Press quote <input id="quote-input" type="text" maxlength="64"></label>
+      <label>Paper <input id="paper-input" type="text" maxlength="32"></label>
+      <label>Ribbon <input id="ribbon-input" type="text" maxlength="64"></label>
+      <label>Billing line 1 <input id="billing1-input" type="text" maxlength="64"></label>
+      <label>Billing line 2 <input id="billing2-input" type="text" maxlength="64"></label>
+      <label>Volume <input id="vol-input" type="text" maxlength="12"></label>
+    </section>
+    <section>
+      <h2>Selected photo</h2>
+      <label>Zoom <span id="zoom-val">100%</span>
+        <input id="zoom" type="range" min="100" max="260" value="100">
+      </label>
+      <button id="flip">Flip photo</button>
+    </section>
+    <section>
+      <h2>Photos</h2>
+      <label class="upload-btn">Use one photo for every panel
+        <input id="upload-one" type="file" accept="image/*" hidden>
+      </label>
+      <label class="upload-btn">Upload up to 6 photos (one per panel)
+        <input id="upload-all" type="file" accept="image/*" multiple hidden>
+      </label>
+      <div id="panel-list"></div>
+    </section>
+  </aside>
+</main>
+<script type="module" src="src/editor.js"></script>
+</body>
+</html>
